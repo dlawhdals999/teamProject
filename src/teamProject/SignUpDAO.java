@@ -31,6 +31,9 @@ public class SignUpDAO {
 		}else if(vo.getNickname().length() == 0) {
 			JOptionPane.showMessageDialog(null, "닉네임을 입력하지 않았습니다.");
 			flag = false;
+		}else if(!vo.getGflag()){
+			JOptionPane.showMessageDialog(null, "성별을 선택해주세요");
+			flag = false;
 		}else {
 			try {
 				Connection conn = DBUtil.getMySQLConnection();
