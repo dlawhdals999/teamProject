@@ -1,4 +1,4 @@
-package showQuiz;
+package teamProject;
 
 import java.awt.Graphics;
 import java.awt.Image;
