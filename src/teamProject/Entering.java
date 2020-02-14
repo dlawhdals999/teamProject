@@ -2,9 +2,13 @@ package teamProject;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,8 +16,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import com.mysql.jdbc.StringUtils;
 
 
 public class Entering extends JFrame implements ActionListener{
@@ -30,13 +37,14 @@ public class Entering extends JFrame implements ActionListener{
 	JLabel password2Label = new JLabel("비밀번호 확인");
 	
 //	텍스트 필드
-	JTextArea quizField = new JTextArea();
+	JTextArea quizField = new JTextArea();;
 	JTextField answerField = new JTextField();
 	JTextField wrong1Field = new JTextField();
 	JTextField wrong2Field = new JTextField();
 	JTextField wrong3Field = new JTextField();
 	JTextField quizPasswordField = new JPasswordField();
 	JTextField password2Field = new JPasswordField();
+	
 	
 //	버튼 필드	
 	JButton saveButton = new JButton("저장하기");
@@ -46,9 +54,12 @@ public class Entering extends JFrame implements ActionListener{
 		setTitle("문제 입력");
 		setBounds(1100, 100, 700, 600);
 		getContentPane().setBackground(Color.yellow);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(null);
 		
+		
 //		문제 라벨, 필드
+		quizField.setLineWrap(true);				// 텍스트 에리아에서 줄바꿈해주는 코드
 		quizLabel.setBounds(40, 35, 100, 30);
 		quizField.setBounds(120, 38, 480, 100);
 		add(quizLabel);
@@ -76,11 +87,14 @@ public class Entering extends JFrame implements ActionListener{
 //		비밀번호 라벨, 필드		
 		quizPasswordLabel.setBounds(40, 420, 100, 30);
 		quizPasswordField.setBounds(120, 420, 100, 40);
+		quizPasswordField.setFont(new Font("돋움", Font.BOLD, 50));
 		add(quizPasswordLabel);
 		add(quizPasswordField);
 //		비밀번호 확인 라벨, 필드
 		password2Label.setBounds(290, 420, 100, 30);
 		password2Field.setBounds(400, 420, 100, 40);
+		password2Field.setFont(new Font("돋움", Font.BOLD, 50));
+		
 		add(password2Label);
 		add(password2Field);
 //		버튼 
@@ -99,8 +113,11 @@ public class Entering extends JFrame implements ActionListener{
 		saveButton.addActionListener(this);
 		cancelButton.addActionListener(this);
 		
+		setVisible(true);
 	}
-	
+	public static void main(String[] args) {
+		new Entering();
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -113,7 +130,12 @@ public class Entering extends JFrame implements ActionListener{
 			quiz = quizField.getText().trim();
 			StringBuffer quiz1 = new StringBuffer(quiz);
 			for (int i = 1; i <= (int)quiz.length() / 20; i++) {
-				quiz1.insert(20*i, "<br>");
+				if(i == 1) {
+					quiz1.insert(20 * i, "<br>");
+				}else {
+					quiz1.insert(20 * i + 4 * (i-1), "<br>");
+					
+				}
 			}
 			quiz = quiz1+"";
 			answer = answerField.getText().trim();
@@ -162,11 +184,12 @@ public class Entering extends JFrame implements ActionListener{
 			
 			break;
 		case "나가기" :
-			setVisible(false);
+			System.exit(0);
 			break;
 		}
 	}
 	
 	
 }
+
 
