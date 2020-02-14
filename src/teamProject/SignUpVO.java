@@ -9,7 +9,14 @@ public class SignUpVO {
 	private String userName;
 	private String nickname;
 	private Boolean gender;
-
+	private Boolean Gflag;
+	
+	public Boolean getGflag() {
+		return Gflag;
+	}
+	public void setGflag(Boolean gflag) {
+		Gflag = gflag;
+	}
 	public int getIdx() {
 		return idx;
 	}
