@@ -62,7 +62,6 @@ public class SignUpDAO {
 				Connection conn = DBUtil.getMySQLConnection();
 				String sql = "insert into sign (id, password, name, nickname, gender) values (?, ?, ?, ?, ?)";
 				PreparedStatement pstmt = conn.prepareStatement(sql);
-				System.out.println(vo.getGender());
 				pstmt.setString(1, vo.getUserID());
 				pstmt.setString(2, vo.getUserPW());
 				pstmt.setString(3, vo.getUserName());
