@@ -93,9 +93,10 @@ public class SignUp extends JFrame implements ActionListener, ItemListener{
 		TextPanel.add(nameText);
 		TextPanel.add(panel6);
 		man = new JRadioButton("남자");
-		woman = new JRadioButton("여자", true);
+		woman = new JRadioButton("여자");
 		man.addItemListener(this);
 		woman.addItemListener(this);
+		
 		genderPanel.add(man);
 		genderPanel.add(woman);
 		group.add(man);
@@ -156,8 +157,12 @@ public class SignUp extends JFrame implements ActionListener, ItemListener{
 				vo.setUserPWCheck(userPWCheck);
 				vo.setUserName(userName);
 				vo.setGender(gender);
+				if(!man.isSelected() && !woman.isSelected()) {
+					vo.setGflag(false);
+				}else {
+					vo.setGflag(true);
+				}
 				vo.setNickname(nickname);
-				
 				SignUpDAO.insert(vo);
 				break;
 			case "초기화":
