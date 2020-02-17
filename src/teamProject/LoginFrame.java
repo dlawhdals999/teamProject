@@ -1,131 +1,83 @@
-package teamProject;
+package frame;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.EventQueue;
+import java.awt.Font;
 
-import javax.swing.JButton;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
 
-public class LoginFrame extends JFrame implements ActionListener{
-	
-	JPanel labelPanel = new JPanel(new GridLayout(4,1));
-	JPanel textFieldPanel = new JPanel(new GridLayout(4,1));
-	JPanel buttonPanel = new JPanel();
-	JPanel restPanel1 = new JPanel();
-	JPanel restPanel2 = new JPanel();
-	JPanel restPanel3 = new JPanel();
-	JPanel restPanel4 = new JPanel();
-	JPanel restPanel5 = new JPanel();
-	JPanel restPanel6 = new JPanel();
-	
-	JLabel IDLabel = new JLabel("ID");
-	JLabel PWLabel = new JLabel("PW");
-	
-	JTextField IDField = new JTextField(20);
-	JPasswordField PWField = new JPasswordField(10);
-	
-	JButton loginButton = new JButton("로그인");
-	JButton cancelButton = new JButton("취소");
-	
-	
-	public LoginFrame() {
+public class LoginFrame {
 
-		setTitle("로그인");
-		setBounds(300, 300, 300, 200);
-		
-//		공백판넬
-		add(restPanel1, BorderLayout.NORTH);
-		add(restPanel2, BorderLayout.EAST);
-		restPanel1.setPreferredSize(new Dimension(300,30));
-		restPanel2.setPreferredSize(new Dimension(30,200));
-		
-		
-//		라벨
-		IDLabel.setHorizontalAlignment(JLabel.CENTER);
-		PWLabel.setHorizontalAlignment(JLabel.CENTER);
-		
-		labelPanel.add(IDLabel);
-		labelPanel.add(restPanel3);
-		labelPanel.add(PWLabel);
-		labelPanel.add(restPanel5);
-		
-		
-		labelPanel.setPreferredSize(new Dimension(70,200));
-		add(labelPanel, BorderLayout.WEST);
-		
-		
-//		텍스트 필드
-		textFieldPanel.add(IDField);
-		textFieldPanel.add(restPanel4);
-		textFieldPanel.add(PWField);
-		textFieldPanel.add(restPanel6);
-		add(textFieldPanel, BorderLayout.CENTER);
-		
-//		버튼
-		buttonPanel.add(loginButton);
-		buttonPanel.add(cancelButton);
-		add(buttonPanel, BorderLayout.SOUTH);
-		buttonPanel.setPreferredSize(new Dimension(300,40));
-		
-//		버튼 액션리스너
-		loginButton.addActionListener(this);
-		cancelButton.addActionListener(this);
-		
-		
-		
-	}
+	private JFrame frame;
+	private JTextField textField;
+	private JPasswordField passwordField;
+	private JButton CancleBtn;
 
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		String userID = null;
-		String userPW= null;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
 		
-		switch (e.getActionCommand()) {
-		case "로그인":
-			IDField.requestFocus();
-			userID = IDField.getText().trim();
-			userPW = PWField.getText().trim();
-			
-			if(userID.equals("")) {
-				JOptionPane.showMessageDialog(loginButton, "아이디를 입력해주세요");
-			}else if(userPW.equals("")){
-				JOptionPane.showMessageDialog(loginButton, "비밀번호를 입력해주세요");
-			}else{
-				MemberInfoVO vo = LoginDAO.login(userID,userPW);
-				if(vo == null) {
-					IDField.setText("");
-					PWField.setText("");
-					IDField.requestFocus();
-				}else {
-					
-					this.setVisible(false);
-					BoardMain.inputButton.setEnabled(true);
-					BoardMain.updateButton.setEnabled(true);
-					BoardMain.deleteButton.setEnabled(true);
-					BoardMain.loginButton.setText("로그아웃");
-				}
+		LoginFrame window = new LoginFrame();
+		
 				
-			}
-			
-			
-			break;
-
-		case "취소":
-			this.setVisible(false);
-			break;
-			
-		}
-		
 	}
-	
 
+	/**
+	 * Create the application.
+	 */
+	public LoginFrame() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		LoginPanel login = new LoginPanel(new ImageIcon("C:\\project_CYJ\\teamproject\\workspace\\Frame\\src\\images\\login.png").getImage());
+		frame.setSize(new Dimension(922, 530));
+		frame.setPreferredSize(new Dimension(login.getDim()));
+		
+		frame.getContentPane().add(login, BorderLayout.SOUTH);
+		
+		textField = new JTextField();
+		textField.setBounds(575, 171, 246, 44);
+		textField.setBorder(null);
+		login.add(textField);
+		textField.setColumns(10);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(575, 247, 246, 49);
+		passwordField.setBorder(null);
+		login.add(passwordField);
+		
+		JButton LoginBtn = new JButton("로그인");
+		LoginBtn.setBounds(451, 329, 149, 72);
+		LoginBtn.setFont(new Font("D2Coding", Font.BOLD, 30));
+		LoginBtn.setBackground(new Color(15844367));
+		login.add(LoginBtn);
+		
+		CancleBtn = new JButton("취소");
+		CancleBtn.setFont(new Font("D2Coding", Font.BOLD, 30));
+		CancleBtn.setBackground(new Color(241, 196, 15));
+		CancleBtn.setBounds(656, 329, 149, 72);
+		login.add(CancleBtn);
+	
+		frame.setSize(LoginPanel.getDim());
+		frame.setPreferredSize(LoginPanel.getDim()); 
+		
+		frame.pack();
+	
+		frame.setVisible(true);
+	}
 }
