@@ -22,33 +22,36 @@ public class ChattingFrame extends JFrame{
 	}
 
 	public ChattingFrame() {
-		Panel panel = new Panel(new ImageIcon("C:\\project_CYJ\\teamproject\\workspace\\Frame\\src\\images\\chatting.png").getImage());
-		getContentPane().add(panel, BorderLayout.NORTH);	
+		mainPanel cattingpanel = new mainPanel(new ImageIcon("C:\\project_CYJ\\teamproject\\workspace\\Frame\\src\\images\\chatting.png").getImage());
+		getContentPane().add(cattingpanel, BorderLayout.NORTH);	
 		
+//		전송버튼
 		JButton sendBtn = new JButton("전송");
 		sendBtn.setBounds(440, 715, 63, 41);
 		sendBtn.setFont(new Font("D2Coding", Font.BOLD, 20));
 		sendBtn.setBackground(new Color(15248986));
 		sendBtn.setForeground(new Color(9803));
 		sendBtn.setBorder(null);
-		panel.add(sendBtn);
+		cattingpanel.add(sendBtn);
 		
+//		글씨 입력
 		textField = new JTextField();
 		textField.setBounds(3, 715, 438, 41);
 		textField.setBorder(null);
 		textField.setFont(new Font("D2Coding", Font.PLAIN, 20));
-		panel.add(textField);
+		cattingpanel.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(0, 0, 503, 709);
-		panel.add(lblNewLabel);
-		setLocation(550, 100);
+//		입력한 글씨들이 올라갈 큰 라벨
+		JLabel bigLabel = new JLabel("");
+		bigLabel.setBounds(0, 0, 503, 709);
+		cattingpanel.add(bigLabel);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		setSize(panel.getDim());
-		setPreferredSize(panel.getDim()); 
+		setLocation(550, 100);
+		setSize(cattingpanel.getDim());
+		setPreferredSize(cattingpanel.getDim()); 
 		pack();
 		setVisible(true);
 		
