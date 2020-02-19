@@ -21,7 +21,7 @@ public class QuizFrame extends JFrame {
 		QuizFrame window = new QuizFrame();
 		
 	}
-
+	int choice = 0;
 	public QuizFrame() {
 		
 //		패널에 이미지 올림
@@ -32,27 +32,27 @@ public class QuizFrame extends JFrame {
 		JLabel firstLabel = new JLabel("");
 		firstLabel.setBounds(144, 244, 328, 64);
 		firstLabel.setOpaque(true);
-		firstLabel.setBackground(Color.white);
+		firstLabel.setBackground(Color.BLACK);
 		panel.add(firstLabel);
 		
 //		두번째 선택지
 		JLabel secondlabel = new JLabel("");
 		secondlabel.setOpaque(true);
-		secondlabel.setBackground(Color.WHITE);
+		secondlabel.setBackground(Color.BLACK);
 		secondlabel.setBounds(144, 342, 328, 64);
 		panel.add(secondlabel);
 		
 //		세번째 선택지
 		JLabel thirdlabel = new JLabel("");
 		thirdlabel.setOpaque(true);
-		thirdlabel.setBackground(Color.WHITE);
+		thirdlabel.setBackground(Color.BLACK);
 		thirdlabel.setBounds(144, 438, 328, 64);
 		panel.add(thirdlabel);
 		
 //		네번째 선택지
 		JLabel fourlabel = new JLabel("");
 		fourlabel.setOpaque(true);
-		fourlabel.setBackground(Color.WHITE);
+		fourlabel.setBackground(Color.BLACK);
 		fourlabel.setBounds(144, 535, 328, 64);
 		panel.add(fourlabel);
 		
@@ -95,7 +95,9 @@ public class QuizFrame extends JFrame {
 				siconLabel.setIcon(new ImageIcon(""));
 				ticonLabel.setIcon(new ImageIcon(""));
 				ficonLabel.setIcon(new ImageIcon(""));
-				
+				choice = 1;
+				System.out.println(choice);
+
 			}
 			
 		});
@@ -109,7 +111,8 @@ public class QuizFrame extends JFrame {
 				siconLabel.setIcon(new ImageIcon("C:\\project_CYJ\\teamproject\\workspace\\Frame\\src\\images\\minipengsu.png"));
 				ticonLabel.setIcon(new ImageIcon(""));
 				ficonLabel.setIcon(new ImageIcon(""));
-				
+				choice = 2;
+				System.out.println(choice);
 			}
 			
 		});
@@ -123,7 +126,8 @@ public class QuizFrame extends JFrame {
 				siconLabel.setIcon(new ImageIcon(""));
 				ticonLabel.setIcon(new ImageIcon("C:\\project_CYJ\\teamproject\\workspace\\Frame\\src\\images\\minipengsu.png"));
 				ficonLabel.setIcon(new ImageIcon(""));
-				
+				choice = 3;
+				System.out.println(choice);
 			}
 			
 		});
@@ -138,7 +142,8 @@ public class QuizFrame extends JFrame {
 				siconLabel.setIcon(new ImageIcon(""));
 				ticonLabel.setIcon(new ImageIcon(""));
 				ficonLabel.setIcon(new ImageIcon("C:\\project_CYJ\\teamproject\\workspace\\Frame\\src\\images\\minipengsu.png"));
-				
+				choice = 4;
+				System.out.println(choice);
 			}
 			
 		});
