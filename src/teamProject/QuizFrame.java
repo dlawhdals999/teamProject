@@ -83,7 +83,11 @@ public class QuizFrame extends JFrame {
 		JLabel ficonLabel = new JLabel("");
 		ficonLabel.setBounds(46, 510, 71, 110);
 		panel.add(ficonLabel);
-
+		
+//		
+		JLabel quizLabel = new JLabel("");
+		quizLabel.setBounds(36, 45, 495, 134);
+		panel.add(quizLabel);
 		
 //		첫번째 선택지가 클릭되었을때 첫번째 펭수가 나옴, 나머지는 사라짐
 		firstLabel.addMouseListener(new MouseAdapter() {
