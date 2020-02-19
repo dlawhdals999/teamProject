@@ -84,7 +84,7 @@ public class QuizFrame extends JFrame {
 		ficonLabel.setBounds(46, 510, 71, 110);
 		panel.add(ficonLabel);
 		
-//		
+//		문제라벨
 		JLabel quizLabel = new JLabel("");
 		quizLabel.setBounds(36, 45, 495, 134);
 		panel.add(quizLabel);
